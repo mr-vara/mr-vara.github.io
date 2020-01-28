@@ -5,10 +5,18 @@
       <script src="https://cdn.jsdelivr.net/npm/vega@5.9.0"></script>
       <script src="https://cdn.jsdelivr.net/npm/vega-lite@4.0.2"></script>
       <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.2.1"></script>
-</head>
-<body>
+      <style>
+           body {
+              text-align: center;
+              font-family: 'Roboto', sans-serif;
+           }
+      </style>
+   </head>
+   <body>
+      <h1>Henry Hub Natural Gas Spot Monthly Price Visualization Graph</h1>
       <div id="line"></div>
-	<a href="index.html"><button>Daily</button></a>
+      <br>
+      <a href="index.html"><button>Daily</button></a>
       <script>
          var schema = {
            "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
