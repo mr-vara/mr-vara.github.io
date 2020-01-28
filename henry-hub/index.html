@@ -1,47 +1,63 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Henry Hub Natural Gas Spot Price - Daily</title>
-<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-<script type="text/javascript">
-    window.onload = function() {
-        var dataPoints = [];
-	 
-        function getDataPointsFromCSV(csv) {
-            var dataPoints = csvLines = points = [];
-            csvLines = csv.split(/[\r?\n|\r|\n]+/);         
-		        
-            for (var i = 0; i < csvLines.length; i++)
-                if (csvLines[i].length > 0) {
-                    points = csvLines[i].split(",");
-                    dataPoints.push({ 
-                        x: parseFloat(points[0]), 
-                        y: parseFloat(points[1]) 		
-                    });
-                }
-            return dataPoints;
-        }
-	
-	$.get("https://raw.githubusercontent.com/mr-vara/natural-gas-prices-wrangling-challenge/master/data/henry_hub_daily_prices.csv", function(data) {
-	    var chart = new CanvasJS.Chart("chartContainer", {
-		    title: {
-		         text: "Henry Hub Natural Gas Spot Price - Daily",
-		    },
-		    data: [{
-		         type: "line",
-		         dataPoints: getDataPointsFromCSV(data)
-		      }]
-	     });
-		
-	      chart.render();
-
-	});
-  }
-</script>
-</head>
-<body>
-	<div id="chartContainer" style="width:100%; height:300px;"></div>
-	<a href="monthly.html"><button>Monthly</button></a>
-</body>
+   <head>
+      <title>Henry Hub Natural Gas Spot Price - Daily</title>
+      <script src="https://cdn.jsdelivr.net/npm/vega@5.9.0"></script>
+      <script src="https://cdn.jsdelivr.net/npm/vega-lite@4.0.2"></script>
+      <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.2.1"></script>
+   </head>
+   <body>
+      <div id="line"></div>
+      <a href="monthly.html"><button>Monthly</button></a>
+      <script>
+         var schema = {
+           "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+           "width": 1000,
+           "height": 330,
+           "data": {
+             "url": "https://raw.githubusercontent.com/mr-vara/natural-gas-prices-wrangling-challenge/master/data/henry_hub_daily_prices.csv"
+           },
+           "encoding": {
+             "x": {
+               "field": "Date",
+               "type": "temporal",
+               "axis": {"title": "Date", "grid": false}
+             }
+           },
+           "layer": [{
+               "encoding": {
+                 "y": {"field": "Price", "type": "quantitative"}
+               },
+               "layer": [
+                 {"mark": "line"},
+                 {"transform": [{"filter": {"selection": "hover"}}], "mark": "point"}
+               ]
+             },{
+               "transform": [{"pivot": "symbol", "value": "Price", "groupby": ["Date", "Price"]}],
+               "mark": "rule",
+               "encoding": {
+                 "opacity": {
+                   "condition": {"value": 0.3, "selection": "hover"},
+                   "value": 0
+                 },
+                 "tooltip": [
+                   {"field": "Price", "type": "quantitative"},
+                   {"field": "Date", "type": "temporal"}
+                 ]
+               },
+               "selection": {
+                 "hover": {
+                   "type": "single",
+                   "fields": ["Date", "Price"],
+                   "nearest": true,
+                   "on": "mouseover",
+                   "empty": "none",
+                   "clear": "mouseout"
+                 }
+               }
+             }]
+         };
+         vegaEmbed('#line', schema);
+      </script>
+   </body>
 </html>
