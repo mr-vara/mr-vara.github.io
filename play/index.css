@@ -1,0 +1,156 @@
+﻿body
+{
+  width:100%;
+  font-size:100%;
+  margin:0px;
+  padding:0px;
+  background-image:url("../images/bar.jpg");
+  background-attachment:fixed;
+  background-repeat:repeat-x;
+  }
+
+
+
+#total {
+//  background-color:#AFAEAE;
+  background-color:#75745E;
+  margin:auto;
+  max-width:900px;
+  text-align:center;
+  }
+
+#logo {
+  display:block;
+  margin:auto;
+  max-width:98%;
+  }
+
+#nav {
+  text-align:center;
+  width:100%;
+  display:block;
+  background-color:#473C3A;
+  border-top:5px solid #473C3A;
+  border-bottom:5px solid #473C3A;
+}
+
+#nav a {
+ font-family:"Impact";
+ color:#72D347;
+ text-decoration:none;
+ margin-left:15px;
+}
+
+
+
+#home_char, #web_title, #web_banner {
+  margin:auto;
+  display:block;
+  max-width:98%;
+  margin-top:5px;
+  margin-bottom:5px;
+}
+
+
+
+#home_char_div {
+	// background-color:#FDECE8;
+	// border:1px solid #939191;
+}
+
+#post2, #post3{
+  background-color:#FDECE8; 
+//  border:1px solid #939191;
+border:2px solid #37361E;
+  text-align:center;
+  margin:0 auto;
+  max-width:95%;
+  padding-bottom:5px;
+  margin-bottom:5px;
+  margin-top:5px;
+  border-radius:2px;
+}
+
+
+
+
+
+#playnow {
+  font-family:"Impact";
+  text-decoration:none;
+  color:#72D347;
+  background-color:#473C3A;
+  border-radius:1px;
+  font-size:100%;
+//  margin-left:auto;
+//  margin-right:3px;
+  margin:auto;
+  display:block;
+  max-width:100px;
+  height:30px;
+  line-height:32px;
+  margin-bottom:3px;
+
+}
+
+
+#para2 {
+font-family:"Impact";
+text-align:center;
+margin:0px;
+font-size:100%;
+color:#FF0000;
+}
+
+
+#para3 {
+  font-family:"Impact";
+  line-height:100%;
+  text-align:center; 
+  margin:0px; 
+  font-size:100%;
+  margin:5px;
+}
+#viewmore {
+  font-family:"Impact";
+  text-decoration:none;
+  color:#72D347;
+  background-color:#473C3A;
+  border-radius:1px;
+  font-size:100%;
+  margin:auto;
+  display:block;
+  max-width:150px;
+  height:30px;
+  line-height:32px;
+  margin-bottom:3px;
+}
+
+
+
+
+#footer {
+  background-color:#473C3A; 
+  text-align:center;
+  margin:0 auto;
+  max-width:100%;
+  margin-bottom:5px;
+}
+
+#footer_links {
+  text-align:center;
+  width:100%;
+  display:block;
+}
+
+#footer_links a {
+ font-family:"Segoe UI";
+ color:#72D347;
+ text-decoration:none;
+ margin-left:15px;
+}
+#footer_links p {
+ margin:0px;
+ font-family:"Segoe UI";
+ color:#72D347;
+}
